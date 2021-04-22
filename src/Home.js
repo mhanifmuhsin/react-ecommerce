@@ -23,7 +23,7 @@ const Home = () => {
     }, 0)
 
     const deleteItem = (id) => setCart(carts.filter(item => item.id !== id));
-    const resetCart = ()=>{
+    const resetCart = () => {
         setCart(initialState);
     }
 
@@ -43,7 +43,7 @@ const Home = () => {
             <div className='container'>
                 <div className='flex row'>
 
-                    {products.map((product,index) => {
+                    {products.map((product, index) => {
                         return (
                             <div className="card m-auto pt-2" style={{ width: '18rem' }} key={index}>
                                 <img className="card-img-top" src={product.picture} alt="Card image cap" />
@@ -132,8 +132,16 @@ const Home = () => {
                                     )}
                                 </div>
                                 <div className="modal-footer">
-                                    <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" className="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#payment" onClick={resetCart}>Pay</button>
+                                    {carts.length > 0 ? (
+                                        <div>
+                                         <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                                         <button type="button" className="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#payment" onClick={resetCart}>Pay</button>
+                                        </div>
+                                    ) : (
+                                        <div>
+                                         <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                    )}
                                 </div>
                             </div>
                         </div>
